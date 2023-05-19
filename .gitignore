@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+
+# misc assets to avoid putting them in git history
+assets/Tiled/
+assets/Tiles/
+assets/Tilemap/
