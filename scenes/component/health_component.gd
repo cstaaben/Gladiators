@@ -1,4 +1,5 @@
 extends Node
+class_name HealthComponent
 
 
 signal died
@@ -13,6 +14,9 @@ func _ready():
 
 func damage(amount: float):
 	current = max(current - amount, 0)
+	Callable(check_death).call_deferred()
+
+func check_death():
 	if current > 0:
 		return
 		

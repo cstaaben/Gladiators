@@ -22,3 +22,4 @@ func get_movement_vector():
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
 	return Vector2(x_movement, y_movement)
+				

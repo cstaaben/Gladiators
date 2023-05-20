@@ -1,7 +1,7 @@
 extends Node
 
 
-signal exp_vial_collected(number: float)
+signal xp_vial_collected(number: float)
 
-func emit_exp_vial_collected(number: float):
-	exp_vial_collected.emit(number)
+func emit_xp_vial_collected(number: float):
+	xp_vial_collected.emit(number)

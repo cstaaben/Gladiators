@@ -1,15 +1,15 @@
 extends Node
 
-var current_exp = 0
+var current_xp = 0
 
 func _ready():
-	GameEvents.exp_vial_collected.connect(on_exp_vial_collected)
+	GameEvents.xp_vial_collected.connect(on_xp_vial_collected)
 
 
-func on_exp_vial_collected(number: float):
+func on_xp_vial_collected(number: float):
 	inc_experience(number)
 
 
-func inc_experience(exp: float):
-	current_exp += exp
-	print(current_exp)
+func inc_experience(xp: float):
+	current_xp += xp
+	print(current_xp)
