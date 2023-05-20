@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Gladiators"
-run/main_scene="res://scenes/root.tscn"
+run/main_scene="res://scenes/main/root.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameEvents="*res://scenes/autoload/game_events.tscn"
 
 [display]
 
@@ -53,11 +57,15 @@ move_down={
 
 [layer_names]
 
+2d_render/layer_1="Terrain"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemy"
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="EnemyCollision"
+2d_physics/layer_5="PlayerPickup"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-2d/snap/snap_2d_transforms_to_pixel=true
