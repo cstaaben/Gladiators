@@ -6,10 +6,10 @@ extends CanvasLayer
 
 func _ready():
 	progress_bar.value = 0
-	experience_manager.xp_updated.connect(on_xp_updated)
+	experience_manager.xp_updated.connect(_on_xp_updated)
 	
 
-func on_xp_updated(current_xp: float, target_xp: float):
+func _on_xp_updated(current_xp: float, target_xp: float):
 	if target_xp == 0:
 		return
 		
