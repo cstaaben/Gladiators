@@ -40,7 +40,6 @@ func check_deal_damage():
 		
 	health.damage(1)
 	damage_timer.start()
-	print(health.current)
 	
 	
 func update_health_display():
