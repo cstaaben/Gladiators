@@ -15,23 +15,42 @@ func _ready():
 	arena_time_manager.difficulty_increased.connect(_on_difficulty_increased)
 	
 	
+func get_spawn_position():
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return Vector2.ZERO
+		
+	var spawn_position = Vector2.ZERO
+	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	for i in 4:
+		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
+		
+		var param = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0)
+		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(param)
+		if result.is_empty():
+			# no collision
+			break
+		else:
+			# collision, rotate 90 degrees
+			random_direction = random_direction.rotated(deg_to_rad(90))
+			
+	return spawn_position
+
+
 func _on_timer_timeout():
 	timer.start()
 	
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
-	
-	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
-		
+
 	var enemy_instance = enemy_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null:
 		return
 		
 	entities_layer.add_child(enemy_instance)
-	enemy_instance.global_position = spawn_position
+	enemy_instance.global_position = get_spawn_position()
 	
 
 func _on_difficulty_increased(difficulty: int):
