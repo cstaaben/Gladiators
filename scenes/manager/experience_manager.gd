@@ -4,7 +4,7 @@ class_name ExperienceManager
 signal xp_updated(current_xp: float, target_xp: float)
 signal level_up(new_level: int)
 
-const TARGET_XP_GROWTH = 5
+const TARGET_XP_GROWTH = 1 # TODO: revert to 5
 
 var current_xp = 0
 var current_level = 1

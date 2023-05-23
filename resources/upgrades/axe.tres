@@ -8,4 +8,5 @@ script = ExtResource("1_d51nr")
 ability_controller_scene = ExtResource("1_v271d")
 id = "axe"
 name = "Axe"
+max_quantity = 1
 description = "Spin axe around the player, dealing damage to any enemies it hits."

@@ -1,9 +1,95 @@
-[gd_scene load_steps=10 format=3 uid="uid://b418sip2ykkmn"]
+[gd_scene load_steps=13 format=3 uid="uid://b418sip2ykkmn"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_o4ao5"]
 [ext_resource type="PackedScene" uid="uid://bp1fcoum13ivo" path="res://scenes/ability/sword/sword_ability_controller.tscn" id="2_461ib"]
 [ext_resource type="PackedScene" uid="uid://cxr7r8lu6oe7y" path="res://scenes/component/health_component.tscn" id="2_tb8y6"]
 [ext_resource type="Texture2D" uid="uid://bjjy8b4mro1u6" path="res://scenes/game_object/player/player.png" id="3_hre78"]
+
+[sub_resource type="Animation" id="Animation_17wxs"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -8), Vector2(2.08189e-12, -12), Vector2(-2.63654e-08, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.261799, 0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.812252, 2.63902, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.1), Vector2(1.5, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gslp4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jaxl"]
+_data = {
+"RESET": SubResource("Animation_gslp4"),
+"walk": SubResource("Animation_17wxs")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmpk6"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -29,6 +115,11 @@ radius = 5.0
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_o4ao5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1jaxl")
+}
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_tb8y6")]
 
@@ -62,6 +153,12 @@ collision_mask = 0
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_3wxor")
 
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Visuals"]
+position = Vector2(2.08165e-12, -8)
+texture = ExtResource("3_hre78")
+
 [node name="CollisionArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -70,10 +167,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_e6vyu")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(2.08165e-12, -8)
-texture = ExtResource("3_hre78")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -5)
