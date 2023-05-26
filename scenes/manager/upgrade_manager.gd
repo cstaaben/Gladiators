@@ -1,14 +1,21 @@
 extends Node
 
-@export var upgrade_pool: Array[AbilityUpgrade]
 @export var xp_manager: ExperienceManager
 @export var upgrade_screen_scene: PackedScene
 
 # key = upgrade id
 var current_upgrades = {}
+var upgrade_pool: WeightedTable = WeightedTable.new()
 
+var upgrade_axe_ability = preload("res://resources/upgrades/upgrade_axe_ability.tres")
+var upgrade_axe_damage = preload("res://resources/upgrades/upgrade_axe_damage.tres")
+var upgrade_sword_speed = preload("res://resources/upgrades/upgrade_sword_rate.tres")
+var upgrade_sword_damage = preload("res://resources/upgrades/upgrade_sword_damage.tres")
 
 func _ready():
+	upgrade_pool.add_item(upgrade_axe_ability, 10)
+	upgrade_pool.add_item(upgrade_sword_speed, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	xp_manager.level_up.connect(_on_level_up)
 	
 	
@@ -24,25 +31,25 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	if upgrade.max_quantity > 0:
 		var current_quantity = current_upgrades[upgrade.id]["quantity"]
 		if current_quantity == upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.filter(func(pool_upgrade: AbilityUpgrade):
-				return upgrade.id != pool_upgrade.id
-			)
+			upgrade_pool.remove_item(upgrade)
 		
+	update_upgrade_pool(upgrade)
 	GameEvents.ability_upgrade_added.emit(upgrade, current_upgrades)
+	
+	
+func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
+	if chosen_upgrade.id == upgrade_axe_ability.id:
+		upgrade_pool.add_item(upgrade_axe_damage, 10)
 
 
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []
-	var filtered_upgrades = upgrade_pool.duplicate()
 	for i in 2:
-		if filtered_upgrades.size() == 0:
+		if chosen_upgrades.size() == upgrade_pool.items.size():
 			break
-		
-		var chosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade	
-		filtered_upgrades = filtered_upgrades.filter(func(upgrade: AbilityUpgrade):
-			return upgrade.id != chosen_upgrade.id
-		)
-		chosen_upgrades.append(chosen_upgrade)
+			
+		var upgrade = upgrade_pool.random_item(chosen_upgrades) as AbilityUpgrade
+		chosen_upgrades.append(upgrade)
 		
 	return chosen_upgrades
 

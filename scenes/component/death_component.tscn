@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://j18dnbgulvgn"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cp6iukrlmk5jx" path="res://scenes/game_object/enemy/enemy.png" id="1_ccove"]
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_fhpuq"]
+[ext_resource type="Texture2D" uid="uid://cp6iukrlmk5jx" path="res://scenes/game_object/enemies/rat/rat.png" id="2_bwvb1"]
 
 [sub_resource type="Animation" id="Animation_hd77r"]
 resource_name = "default"
@@ -84,7 +84,7 @@ libraries = {
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_maou3")
-texture = ExtResource("1_ccove")
+texture = ExtResource("2_bwvb1")
 lifetime = 0.5
 one_shot = true
 fixed_fps = 0

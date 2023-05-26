@@ -2,17 +2,21 @@ extends Node
 
 const SPAWN_RADIUS = 375
 
-@export var enemy_scene: PackedScene
+@export var rat_scene: PackedScene
+@export var wizard_scene: PackedScene
 @export var arena_time_manager: Node
 
 @onready var timer: Timer = $Timer
 
 var base_spawn_time = 0
+var enemy_table = WeightedTable.new()
+
 
 func _ready():
 	base_spawn_time = timer.wait_time
 	timer.timeout.connect(_on_timer_timeout)
 	arena_time_manager.difficulty_increased.connect(_on_difficulty_increased)
+	enemy_table.add_item(rat_scene, 10)
 	
 	
 func get_spawn_position():
@@ -44,6 +48,7 @@ func _on_timer_timeout():
 	if player == null:
 		return
 
+	var enemy_scene = enemy_table.random_item()
 	var enemy_instance = enemy_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null:
@@ -56,3 +61,6 @@ func _on_timer_timeout():
 func _on_difficulty_increased(difficulty: int):
 	var timer_decrease = min((.1 / 12) * difficulty, 0.7)
 	timer.wait_time = base_spawn_time - timer_decrease
+	
+	if difficulty == 6:
+		enemy_table.add_item(wizard_scene, 20)
