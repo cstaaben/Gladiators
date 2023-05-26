@@ -13,6 +13,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test Name"
+horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true

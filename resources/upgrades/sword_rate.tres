@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://de7kt07lj3sxd"]
-
-[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_qllqn"]
-
-[resource]
-script = ExtResource("1_qllqn")
-id = "sword_rate"
-name = "Sword Attack Speed"
-description = "Increases sword attack speed by 10%. Stacks with other Sword Attack Speed upgrades."
