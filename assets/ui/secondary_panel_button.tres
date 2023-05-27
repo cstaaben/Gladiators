@@ -1,0 +1,19 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c7t1mxbg7c3xm"]
+
+[ext_resource type="Texture2D" uid="uid://fteu5aqwbsp2" path="res://assets/ui/ui.png" id="1_odiyj"]
+
+[resource]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_odiyj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+region_rect = Rect2(16, 0, 16, 16)
