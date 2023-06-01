@@ -1,9 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://b418sip2ykkmn"]
+[gd_scene load_steps=29 format=3 uid="uid://b418sip2ykkmn"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_o4ao5"]
+[ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_8gdk6"]
 [ext_resource type="PackedScene" uid="uid://bp1fcoum13ivo" path="res://scenes/ability/sword/sword_ability_controller.tscn" id="2_461ib"]
 [ext_resource type="PackedScene" uid="uid://cxr7r8lu6oe7y" path="res://scenes/component/health_component.tscn" id="2_tb8y6"]
+[ext_resource type="PackedScene" uid="uid://bw0mb15jrgilp" path="res://scenes/component/velocity_component.tscn" id="2_x048o"]
+[ext_resource type="AudioStream" uid="uid://c0ogaiedeiemy" path="res://assets/audio/impactPlate_heavy_000.ogg" id="3_fokk8"]
 [ext_resource type="Texture2D" uid="uid://bjjy8b4mro1u6" path="res://scenes/game_object/player/player.png" id="3_hre78"]
+[ext_resource type="AudioStream" uid="uid://cut7nflalw300" path="res://assets/audio/impactPlate_heavy_001.ogg" id="4_6ow7p"]
+[ext_resource type="AudioStream" uid="uid://dphsshsn18l" path="res://assets/audio/impactPlate_heavy_002.ogg" id="5_2kosn"]
+[ext_resource type="AudioStream" uid="uid://d2y6ehd5hhat7" path="res://assets/audio/impactPlate_heavy_003.ogg" id="6_tbtcc"]
+[ext_resource type="AudioStream" uid="uid://1eri541q6mxh" path="res://assets/audio/impactPlate_heavy_004.ogg" id="7_fm3gi"]
+[ext_resource type="AudioStream" uid="uid://dp58eieikdlv3" path="res://assets/audio/impactPlate_light_000.ogg" id="8_y6j76"]
+[ext_resource type="AudioStream" uid="uid://o0trrpww83y7" path="res://assets/audio/impactPlate_light_001.ogg" id="9_sxso4"]
+[ext_resource type="AudioStream" uid="uid://bpfou7exp73au" path="res://assets/audio/impactPlate_light_002.ogg" id="10_24rgs"]
+[ext_resource type="AudioStream" uid="uid://bo5gg1ccf00nq" path="res://assets/audio/impactPlate_light_003.ogg" id="11_10v0n"]
+[ext_resource type="AudioStream" uid="uid://dl2gskjmiu7d5" path="res://assets/audio/impactPlate_light_004.ogg" id="12_7hsx2"]
+[ext_resource type="AudioStream" uid="uid://dd34dhg7e046w" path="res://assets/audio/impactPlate_medium_000.ogg" id="13_w3tii"]
+[ext_resource type="AudioStream" uid="uid://kb0oa4mh8c2y" path="res://assets/audio/impactPlate_medium_001.ogg" id="14_d80lh"]
+[ext_resource type="AudioStream" uid="uid://b1cqdltuxy6oo" path="res://assets/audio/impactPlate_medium_002.ogg" id="15_i1f8r"]
+[ext_resource type="AudioStream" uid="uid://botdhn8lsagxx" path="res://assets/audio/impactPlate_medium_003.ogg" id="16_0hrqy"]
+[ext_resource type="AudioStream" uid="uid://bo44wu0cexauv" path="res://assets/audio/impactPlate_medium_004.ogg" id="17_8ui62"]
 
 [sub_resource type="Animation" id="Animation_gslp4"]
 length = 0.001
@@ -117,6 +134,13 @@ script = ExtResource("1_o4ao5")
 libraries = {
 "": SubResource("AnimationLibrary_1jaxl")
 }
+
+[node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("2_8gdk6")]
+streams = Array[AudioStream]([ExtResource("3_fokk8"), ExtResource("4_6ow7p"), ExtResource("5_2kosn"), ExtResource("6_tbtcc"), ExtResource("7_fm3gi"), ExtResource("8_y6j76"), ExtResource("9_sxso4"), ExtResource("10_24rgs"), ExtResource("11_10v0n"), ExtResource("12_7hsx2"), ExtResource("13_w3tii"), ExtResource("14_d80lh"), ExtResource("15_i1f8r"), ExtResource("16_0hrqy"), ExtResource("17_8ui62")])
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_x048o")]
+max_speed = 90
+acceleration = 25.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_tb8y6")]
 

@@ -1,6 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjj3bkukb6535"]
+[gd_scene load_steps=16 format=3 uid="uid://bjj3bkukb6535"]
 
 [ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_gogdj"]
+[ext_resource type="PackedScene" uid="uid://pee1yb3ty2f7" path="res://scenes/component/random_audio_player_component.tscn" id="2_g273o"]
+[ext_resource type="AudioStream" uid="uid://br7m2bwqeg5n7" path="res://assets/audio/switch1.ogg" id="3_sv2jd"]
+[ext_resource type="AudioStream" uid="uid://nnnsaaakthad" path="res://assets/audio/switch2.ogg" id="4_21phl"]
+[ext_resource type="AudioStream" uid="uid://d0yhvg8gitysj" path="res://assets/audio/switch3.ogg" id="5_snqyc"]
+[ext_resource type="AudioStream" uid="uid://cjjuc2jepi2bu" path="res://assets/audio/switch4.ogg" id="6_57nfb"]
+[ext_resource type="AudioStream" uid="uid://xy0bqnb86l1e" path="res://assets/audio/switch5.ogg" id="7_yvox2"]
+[ext_resource type="AudioStream" uid="uid://cnbxvcx2y8s3s" path="res://assets/audio/switch6.ogg" id="8_10kex"]
+[ext_resource type="AudioStream" uid="uid://byv26u74q2cv3" path="res://assets/audio/switch7.ogg" id="9_62qqb"]
+[ext_resource type="AudioStream" uid="uid://bm4nwhcfw0bng" path="res://assets/audio/switch8.ogg" id="10_hnpvv"]
+[ext_resource type="AudioStream" uid="uid://djch2pfdmosln" path="res://assets/audio/switch9.ogg" id="11_gtbre"]
+[ext_resource type="AudioStream" uid="uid://b5xp0man02td4" path="res://assets/audio/switch10.ogg" id="12_x454n"]
 
 [sub_resource type="Animation" id="Animation_r48ha"]
 length = 0.001
@@ -75,6 +86,13 @@ script = ExtResource("1_gogdj")
 libraries = {
 "": SubResource("AnimationLibrary_3txsh")
 }
+
+[node name="HoverAudioPlayer" parent="." instance=ExtResource("2_g273o")]
+volume_db = -20.0
+streams = Array[AudioStream]([ExtResource("3_sv2jd"), ExtResource("4_21phl"), ExtResource("5_snqyc"), ExtResource("6_57nfb"), ExtResource("7_yvox2"), ExtResource("8_10kex"), ExtResource("9_62qqb"), ExtResource("10_hnpvv"), ExtResource("11_gtbre"), ExtResource("12_x454n")])
+
+[node name="SelectedAudioPlayer" parent="." instance=ExtResource("2_g273o")]
+streams = Array[AudioStream]([ExtResource("3_sv2jd"), ExtResource("4_21phl"), ExtResource("5_snqyc"), ExtResource("6_57nfb"), ExtResource("7_yvox2"), ExtResource("8_10kex"), ExtResource("9_62qqb"), ExtResource("10_hnpvv"), ExtResource("11_gtbre"), ExtResource("12_x454n")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

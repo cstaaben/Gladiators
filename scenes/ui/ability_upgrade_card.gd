@@ -41,11 +41,13 @@ func _on_gui_input(event: InputEvent):
 	if !event.is_action_pressed("left_click") || disabled:
 		return
 	
+	$SelectedAudioPlayer.play_random()
 	select_card()
 	
 	
 func select_card():
 	disabled = true
+	$SelectedAudioPlayer.play_random()
 	var tween = create_tween()
 	tween.tween_property(self, "position", position + (Vector2.DOWN * 10), 0.1)
 	tween.tween_property(self, "position", position + (Vector2.UP * -25), 0.2)
@@ -63,7 +65,8 @@ func select_card():
 func _on_mouse_entered():
 	if disabled:
 		return
-	
+		
+	$HoverAudioPlayer.play_random()
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE * 1.15, 0.1)
 	

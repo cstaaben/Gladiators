@@ -1,7 +1,21 @@
 extends CanvasLayer
 
 
+@onready var panel_container: PanelContainer = %PanelContainer
+
 func _ready():
+	panel_container.pivot_offset = panel_container.size / 2
+	var tween = create_tween()
+	tween.tween_property(panel_container, "scale", Vector2.ONE, 0.3)\
+		.from(Vector2.ZERO)\
+		.set_ease(Tween.EASE_OUT)\
+		.set_trans(Tween.TRANS_BACK)
+	tween.parallel()\
+		.tween_property(panel_container, "rotation", TAU, 0.3)\
+		.from(deg_to_rad(0))\
+		.set_ease(Tween.EASE_OUT)\
+		.set_trans(Tween.TRANS_QUINT)
+	
 	get_tree().paused = true
 	$AnimationPlayer.play("fade_in")
 
