@@ -6,7 +6,7 @@
 [ext_resource type="Animation" uid="uid://cys14uqg0lr2y" path="res://assets/ui/fade_RESET.res" id="4_gbjab"]
 [ext_resource type="Animation" uid="uid://ctn4of46lfx15" path="res://assets/ui/fade_out.res" id="5_ev6ve"]
 [ext_resource type="PackedScene" uid="uid://pee1yb3ty2f7" path="res://scenes/component/random_audio_player_component.tscn" id="6_4scyf"]
-[ext_resource type="AudioStream" uid="uid://dhujwumjrmqg6" path="res://assets/audio/level_up.ogg" id="6_cnxv6"]
+[ext_resource type="AudioStream" uid="uid://dhujwumjrmqg6" path="res://assets/audio/victory.ogg" id="7_2i26o"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o6m8"]
 _data = {
@@ -27,7 +27,7 @@ libraries = {
 }
 
 [node name="RandomAudioPlayerComponent" parent="." instance=ExtResource("6_4scyf")]
-stream = ExtResource("6_cnxv6")
+stream = ExtResource("7_2i26o")
 autoplay = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
