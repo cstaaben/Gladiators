@@ -1,7 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 
-addons/
+addons/ 
+
+# IntelliJ-specific files
+.idea/
 
 # misc assets to avoid putting them in git history
 assets/Tiled/
