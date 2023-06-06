@@ -1,22 +1,131 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjj3bkukb6535"]
+[gd_scene load_steps=16 format=3 uid="uid://bjj3bkukb6535"]
 
 [ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_gogdj"]
+[ext_resource type="PackedScene" uid="uid://pee1yb3ty2f7" path="res://scenes/component/random_audio_player_component.tscn" id="2_g273o"]
+[ext_resource type="AudioStream" uid="uid://br7m2bwqeg5n7" path="res://assets/audio/switch1.ogg" id="3_sv2jd"]
+[ext_resource type="AudioStream" uid="uid://nnnsaaakthad" path="res://assets/audio/switch2.ogg" id="4_21phl"]
+[ext_resource type="AudioStream" uid="uid://d0yhvg8gitysj" path="res://assets/audio/switch3.ogg" id="5_snqyc"]
+[ext_resource type="AudioStream" uid="uid://cjjuc2jepi2bu" path="res://assets/audio/switch4.ogg" id="6_57nfb"]
+[ext_resource type="AudioStream" uid="uid://xy0bqnb86l1e" path="res://assets/audio/switch5.ogg" id="7_yvox2"]
+[ext_resource type="AudioStream" uid="uid://cnbxvcx2y8s3s" path="res://assets/audio/switch6.ogg" id="8_10kex"]
+[ext_resource type="AudioStream" uid="uid://byv26u74q2cv3" path="res://assets/audio/switch7.ogg" id="9_62qqb"]
+[ext_resource type="AudioStream" uid="uid://bm4nwhcfw0bng" path="res://assets/audio/switch8.ogg" id="10_hnpvv"]
+[ext_resource type="AudioStream" uid="uid://djch2pfdmosln" path="res://assets/audio/switch9.ogg" id="11_gtbre"]
+[ext_resource type="AudioStream" uid="uid://b5xp0man02td4" path="res://assets/audio/switch10.ogg" id="12_x454n"]
 
-[node name="AbilityUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(120, 150)
+[sub_resource type="Animation" id="Animation_r48ha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pk7fm"]
+resource_name = "discard"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(18.3791, 5.27803, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3txsh"]
+_data = {
+"RESET": SubResource("Animation_r48ha"),
+"discard": SubResource("Animation_pk7fm")
+}
+
+[node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 150.0
+offset_bottom = 150.0
+pivot_offset = Vector2(75, 75)
 script = ExtResource("1_gogdj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="SelectedPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3txsh")
+}
 
-[node name="NameLabel" type="Label" parent="VBoxContainer"]
+[node name="HoverAudioPlayer" parent="." instance=ExtResource("2_g273o")]
+volume_db = -20.0
+streams = Array[AudioStream]([ExtResource("3_sv2jd"), ExtResource("4_21phl"), ExtResource("5_snqyc"), ExtResource("6_57nfb"), ExtResource("7_yvox2"), ExtResource("8_10kex"), ExtResource("9_62qqb"), ExtResource("10_hnpvv"), ExtResource("11_gtbre"), ExtResource("12_x454n")])
+
+[node name="SelectedAudioPlayer" parent="." instance=ExtResource("2_g273o")]
+streams = Array[AudioStream]([ExtResource("3_sv2jd"), ExtResource("4_21phl"), ExtResource("5_snqyc"), ExtResource("6_57nfb"), ExtResource("7_yvox2"), ExtResource("8_10kex"), ExtResource("9_62qqb"), ExtResource("10_hnpvv"), ExtResource("11_gtbre"), ExtResource("12_x454n")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"AlternatePanelContainer"
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 32
 text = "Test Name"
 horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/outline_size = 9
 text = "Some test description here"
 autowrap_mode = 3

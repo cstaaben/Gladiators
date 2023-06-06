@@ -1,7 +1,28 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://4ljnqknkpg5r"]
 
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_fhpuq"]
 [ext_resource type="Texture2D" uid="uid://cp6iukrlmk5jx" path="res://scenes/game_object/enemies/rat/rat.png" id="2_bwvb1"]
+[ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="3_klqsb"]
+[ext_resource type="AudioStream" uid="uid://dwp6dck2v0r3n" path="res://assets/audio/hit_000.ogg" id="4_qddy4"]
+[ext_resource type="AudioStream" uid="uid://bd51qy8ulp74n" path="res://assets/audio/hit_001.ogg" id="5_40h1o"]
+[ext_resource type="AudioStream" uid="uid://vegoymwgqxww" path="res://assets/audio/hit_002.ogg" id="6_2fc7t"]
+[ext_resource type="AudioStream" uid="uid://can2mmmhgv5mt" path="res://assets/audio/hit_003.ogg" id="7_8wcwb"]
+[ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="8_2rpnt"]
+
+[sub_resource type="Animation" id="Animation_v6s7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hd77r"]
 resource_name = "default"
@@ -30,21 +51,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"queue_free"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_v6s7k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_77jst"]
@@ -89,3 +95,6 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("3_klqsb")]
+streams = Array[AudioStream]([ExtResource("4_qddy4"), ExtResource("5_40h1o"), ExtResource("6_2fc7t"), ExtResource("7_8wcwb"), ExtResource("8_2rpnt")])
