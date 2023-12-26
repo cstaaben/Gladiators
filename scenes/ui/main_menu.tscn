@@ -60,3 +60,4 @@ text = "Quit
 "
 
 [node name="Vignette" parent="." instance=ExtResource("2_g8pas")]
+layer = 2

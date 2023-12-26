@@ -39,6 +39,9 @@ func play_jingle(defeat: bool = false) -> void:
 
 
 func _on_restart_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+
 	$AnimationPlayer.play("fade_out")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
