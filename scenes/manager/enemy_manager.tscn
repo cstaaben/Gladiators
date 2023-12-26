@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc1pjgd08fysv"]
+[gd_scene load_steps=2 format=3 uid="uid://bx4wjth5gj4df"]
 
 [ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_8sc37"]
 

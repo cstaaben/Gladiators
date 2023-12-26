@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvp6novwmdil7"]
+[gd_scene load_steps=10 format=3 uid="uid://dvp6novwmdil7"]
 
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_q5ndb"]
 [ext_resource type="PackedScene" uid="uid://bjj3bkukb6535" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_u84dc"]
 [ext_resource type="Animation" uid="uid://ctoi1bgts8b64" path="res://assets/ui/fade_in.res" id="3_ebuoj"]
 [ext_resource type="Animation" uid="uid://cys14uqg0lr2y" path="res://assets/ui/fade_RESET.res" id="4_gbjab"]
 [ext_resource type="Animation" uid="uid://ctn4of46lfx15" path="res://assets/ui/fade_out.res" id="5_ev6ve"]
-[ext_resource type="PackedScene" uid="uid://pee1yb3ty2f7" path="res://scenes/component/random_audio_player_component.tscn" id="6_4scyf"]
+[ext_resource type="PackedScene" path="res://scenes/component/random_audio_player_component.tscn" id="6_4scyf"]
 [ext_resource type="AudioStream" uid="uid://dhujwumjrmqg6" path="res://assets/audio/victory.ogg" id="7_2i26o"]
+[ext_resource type="Theme" uid="uid://dk12bt5tqquv3" path="res://resources/theme/theme.tres" id="8_aj6as"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o6m8"]
 _data = {
@@ -21,10 +22,10 @@ script = ExtResource("1_q5ndb")
 upgrade_card_scene = ExtResource("1_u84dc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fade_in"
 libraries = {
 "": SubResource("AnimationLibrary_8o6m8")
 }
+autoplay = "fade_in"
 
 [node name="RandomAudioPlayerComponent" parent="." instance=ExtResource("6_4scyf")]
 stream = ExtResource("7_2i26o")
@@ -34,6 +35,7 @@ autoplay = true
 modulate = Color(1, 1, 1, 0.572549)
 offset_right = 640.0
 offset_bottom = 360.0
+theme = ExtResource("8_aj6as")
 theme_type_variation = &"TransparentPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -47,9 +49,7 @@ theme_override_constants/separation = 10
 [node name="HeaderLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/outline_size = 10
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Level Up!"
 horizontal_alignment = 1
@@ -57,9 +57,7 @@ horizontal_alignment = 1
 [node name="InstructionsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/outline_size = 10
+theme_type_variation = &"BlueOutlineLabel"
 text = "Choose an upgrade"
 horizontal_alignment = 1
 

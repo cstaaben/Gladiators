@@ -8,11 +8,10 @@ func _ready():
 	%Player.health.died.connect(_on_player_died)
 	
 	
-func _input(event: InputEvent):
-	if !InputMap.action_has_event("pause", event):
-		return
-		
-	add_child(pause_menu_scene.instantiate())
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		add_child(pause_menu_scene.instantiate())
+		get_tree().root.set_input_as_handled()
 
 
 func _on_player_died():

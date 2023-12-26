@@ -26,8 +26,18 @@ func _ready():
 func set_defeat():
 	%TitleLabel.text = "GAME OVER"
 	%DescriptionLabel.text = "You lost!"
+	play_jingle(true)
 	
 	
+func play_jingle(defeat: bool = false) -> void:
+	var streamPlayer: AudioStreamPlayer
+	if defeat:
+		streamPlayer = $DefeatStreamPlayer
+	else:
+		streamPlayer = $VictoryStreamPlayer
+	streamPlayer.play()
+
+
 func _on_restart_button_pressed():
 	$AnimationPlayer.play("fade_out")
 	await $AnimationPlayer.animation_finished
