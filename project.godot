@@ -15,7 +15,12 @@ run/main_scene="res://scenes/ui/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Gladiators"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.247059, 0.14902, 0.192157, 1)
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -32,6 +37,7 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
+window/size/mode.release=3
 
 [editor]
 

@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="1_belug"]
 [ext_resource type="Script" path="res://scenes/game_object/enemies/wizard/wizard.gd" id="1_txki8"]
 [ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/vial_drop_component.tscn" id="2_qhuf4"]
-[ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_wsvir"]
+[ext_resource type="PackedScene" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_wsvir"]
 [ext_resource type="AudioStream" uid="uid://dwp6dck2v0r3n" path="res://assets/audio/hit_000.ogg" id="3_2do5n"]
-[ext_resource type="PackedScene" uid="uid://4ljnqknkpg5r" path="res://scenes/component/death_component.tscn" id="3_fcuvl"]
+[ext_resource type="PackedScene" path="res://scenes/component/death_component.tscn" id="3_fcuvl"]
 [ext_resource type="AudioStream" uid="uid://bd51qy8ulp74n" path="res://assets/audio/hit_001.ogg" id="4_glg37"]
 [ext_resource type="PackedScene" uid="uid://ckbkksdk7rjau" path="res://scenes/component/hurt_box_component.tscn" id="4_v8b5c"]
 [ext_resource type="AudioStream" uid="uid://vegoymwgqxww" path="res://assets/audio/hit_002.ogg" id="5_0ljpc"]
-[ext_resource type="PackedScene" uid="uid://bw0mb15jrgilp" path="res://scenes/component/velocity_component.tscn" id="5_8tbsk"]
+[ext_resource type="PackedScene" path="res://scenes/component/velocity_component.tscn" id="5_8tbsk"]
 [ext_resource type="AudioStream" uid="uid://can2mmmhgv5mt" path="res://assets/audio/hit_003.ogg" id="6_0o8eg"]
-[ext_resource type="PackedScene" uid="uid://c7yoch83br74m" path="res://scenes/component/hit_flash_component.tscn" id="6_qupdn"]
+[ext_resource type="PackedScene" path="res://scenes/component/hit_flash_component.tscn" id="6_qupdn"]
 [ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="7_f0esi"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_kjvjp"]
 
@@ -125,11 +125,11 @@ resource_local_to_scene = true
 shader = ExtResource("7_kjvjp")
 shader_parameter/brightness = 2.08165e-12
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wr2r1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8muk"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vlwyj"]
-radius = 7.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_pww60"]
+radius = 8.0
 
 [node name="Wizard" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -137,17 +137,17 @@ collision_mask = 9
 script = ExtResource("1_txki8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_rtnw0")
 }
+autoplay = "walk"
 
 [node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("2_wsvir")]
 streams = Array[AudioStream]([ExtResource("3_2do5n"), ExtResource("4_glg37"), ExtResource("5_0ljpc"), ExtResource("6_0o8eg"), ExtResource("7_f0esi")])
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_belug")
-max_health = 30.0
+max_health = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_qhuf4")]
 health_component = NodePath("../HealthComponent")
@@ -166,12 +166,11 @@ sprite = NodePath("../Visuals/Sprite")
 hit_flash_material = SubResource("ShaderMaterial_3cwqx")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_v8b5c")]
-visible = false
 position = Vector2(0, -7)
 health = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-shape = SubResource("CircleShape2D_wr2r1")
+shape = SubResource("CircleShape2D_o8muk")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -180,6 +179,5 @@ texture = ExtResource("1_5mg3x")
 offset = Vector2(2.08165e-12, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_vlwyj")
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_pww60")

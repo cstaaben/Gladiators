@@ -1,18 +1,18 @@
 [gd_scene load_steps=22 format=3 uid="uid://chrpr5jqt2khs"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemies/rat/rat.gd" id="1_ah3cx"]
-[ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_2dq5u"]
+[ext_resource type="PackedScene" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_2dq5u"]
 [ext_resource type="PackedScene" uid="uid://cxr7r8lu6oe7y" path="res://scenes/component/health_component.tscn" id="2_co0pl"]
 [ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/vial_drop_component.tscn" id="3_25xii"]
 [ext_resource type="AudioStream" uid="uid://dwp6dck2v0r3n" path="res://assets/audio/hit_000.ogg" id="3_g26gm"]
 [ext_resource type="AudioStream" uid="uid://bd51qy8ulp74n" path="res://assets/audio/hit_001.ogg" id="4_40xny"]
-[ext_resource type="PackedScene" uid="uid://bw0mb15jrgilp" path="res://scenes/component/velocity_component.tscn" id="4_cpoba"]
-[ext_resource type="PackedScene" uid="uid://4ljnqknkpg5r" path="res://scenes/component/death_component.tscn" id="4_wc4ql"]
+[ext_resource type="PackedScene" path="res://scenes/component/velocity_component.tscn" id="4_cpoba"]
+[ext_resource type="PackedScene" path="res://scenes/component/death_component.tscn" id="4_wc4ql"]
 [ext_resource type="PackedScene" uid="uid://ckbkksdk7rjau" path="res://scenes/component/hurt_box_component.tscn" id="5_2mkwl"]
 [ext_resource type="AudioStream" uid="uid://vegoymwgqxww" path="res://assets/audio/hit_002.ogg" id="5_etd3a"]
 [ext_resource type="Texture2D" uid="uid://cp6iukrlmk5jx" path="res://scenes/game_object/enemies/rat/rat.png" id="6_5txjw"]
 [ext_resource type="AudioStream" uid="uid://can2mmmhgv5mt" path="res://assets/audio/hit_003.ogg" id="6_f81jm"]
-[ext_resource type="PackedScene" uid="uid://c7yoch83br74m" path="res://scenes/component/hit_flash_component.tscn" id="6_plgnk"]
+[ext_resource type="PackedScene" path="res://scenes/component/hit_flash_component.tscn" id="6_plgnk"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_t24ts"]
 [ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="7_yxps7"]
 
@@ -96,10 +96,10 @@ motion_mode = 1
 script = ExtResource("1_ah3cx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_ajh1e")
 }
+autoplay = "walk"
 
 [node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("2_2dq5u")]
 streams = Array[AudioStream]([ExtResource("3_g26gm"), ExtResource("4_40xny"), ExtResource("5_etd3a"), ExtResource("6_f81jm"), ExtResource("7_yxps7")])
