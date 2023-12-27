@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 var number_colliding_bodies: int
 var base_speed: int
+var last_regen_time: int
 
 func _ready():
 	base_speed = velocity_component.max_speed
@@ -19,6 +20,7 @@ func _ready():
 	damage_timer.timeout.connect(_on_damage_timer_timeout)
 	health.health_changed.connect(_on_health_changed)
 	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added)
+	GameEvents.time_ticked.connect(_on_time_ticked)
 	update_health_display()
 	
 
@@ -83,3 +85,17 @@ func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictio
 		abilities.add_child(upgrade.ability_controller_scene.instantiate())
 	elif upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * 0.1 * current_upgrades["player_speed"]["quantity"])
+
+
+func _on_time_ticked(timestamp: int):
+	var hp_regen_amount = MetaProgression.get_upgrade_quantity("health_regeneration")
+	if hp_regen_amount == 0: # player doesn't have this upgrade
+		return
+
+	# 30s since last regen or no regen has happened yet
+	var is_thirty_sec_interval = (timestamp - last_regen_time) == 30 || last_regen_time == 0
+	if !is_thirty_sec_interval:
+		return
+
+	last_regen_time = timestamp
+	health.heal(hp_regen_amount)
