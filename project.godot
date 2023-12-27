@@ -38,6 +38,7 @@ window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 window/size/mode.release=3
+window/size/mode.debug=3
 
 [editor]
 
