@@ -40,10 +40,9 @@ func play_jingle(defeat: bool = false) -> void:
 
 
 func _on_continue_button_pressed():
-	$AnimationPlayer.play("fade_out")
-	await $AnimationPlayer.animation_finished
+	ScreenTransition.transition_to_scene("res://scenes/ui/meta_upgrade_menu.tscn")
+	await ScreenTransition.transitioned_halfway
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main/root.tscn")
 
 
 func _on_quit_button_pressed():
@@ -52,5 +51,6 @@ func _on_quit_button_pressed():
 
 
 func _on_menu_button_pressed():
-	get_tree().paused = false
 	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	await ScreenTransition.transitioned_halfway
+	get_tree().paused = false

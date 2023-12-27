@@ -54,7 +54,3 @@ func get_upgrade_quantity(id: String):
 
 func _on_xp_collected(number: float):
 	total_xp += number
-
-
-class UpgradeData:
-	var quantity: int

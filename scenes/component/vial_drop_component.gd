@@ -9,7 +9,12 @@ func _ready():
 	(health_component as HealthComponent).died.connect(_on_died)
 
 func _on_died():
-	if vial_scene == null or not owner is Node2D or randf() > drop_percent:
+	var adjusted_percent = drop_percent
+	var upgrade_count = MetaProgression.get_upgrade_quantity("experience_gain")
+	if upgrade_count > 0:
+		adjusted_percent += (0.1 * upgrade_count)
+		
+	if vial_scene == null or not owner is Node2D or randf() > adjusted_percent:
 		return
 
 	var spawn_position = (owner as Node2D).global_position
