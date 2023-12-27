@@ -8,6 +8,7 @@ signal selected
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var purchase_button: Button = %PurchaseButton
 @onready var progress_label: Label = %ProgressLabel
+@onready var count_label: Label = %CountLabel
 
 var _upgrade: MetaUpgrade
 
@@ -41,12 +42,17 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 
 func update_progress():
-	var total_xp = MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY]
-	var percent = total_xp / _upgrade.xp_cost
+	var current_quantity = MetaProgression.get_upgrade_quantity(_upgrade.id)
+	var is_maxed = current_quantity >= _upgrade.max_quantity
+	var total_xp = MetaProgression.total_xp
+	var percent = total_xp / float(_upgrade.xp_cost)
 	percent = min(percent, 1)
 	progress_bar.value = percent
-	purchase_button.disabled = percent < 1
+	purchase_button.disabled = percent < 1 || is_maxed
+	if is_maxed:
+		purchase_button.text = "Max Reached"
 	progress_label.text = str(total_xp) + "/" + str(_upgrade.xp_cost)
+	count_label.text = "x%d" % current_quantity
 	
 	
 func select_card():
@@ -83,9 +89,7 @@ func _on_purchase_button_pressed():
 		return
 
 	MetaProgression.add_meta_upgrade(_upgrade)
-	print(MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY])
-	MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY] -= _upgrade.xp_cost
-	print(MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY])
+	MetaProgression.total_xp -= _upgrade.xp_cost
 	MetaProgression.save_data()
 	get_tree().call_group("meta_upgrade_card", "update_progress")
 	select_card()

@@ -19,7 +19,8 @@ func _ready():
 	get_tree().paused = true
 	$AnimationPlayer.play("fade_in")
 
-	%RestartButton.pressed.connect(_on_restart_button_pressed)
+	%ContinueButton.pressed.connect(_on_continue_button_pressed)
+	%MenuButton.pressed.connect(_on_menu_button_pressed)
 	%QuitButton.pressed.connect(_on_quit_button_pressed)
 
 
@@ -38,10 +39,7 @@ func play_jingle(defeat: bool = false) -> void:
 	streamPlayer.play()
 
 
-func _on_restart_button_pressed():
-	ScreenTransition.transition()
-	await ScreenTransition.transitioned_halfway
-
+func _on_continue_button_pressed():
 	$AnimationPlayer.play("fade_out")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
@@ -51,3 +49,8 @@ func _on_restart_button_pressed():
 func _on_quit_button_pressed():
 	MetaProgression.save_data()
 	get_tree().quit()
+
+
+func _on_menu_button_pressed():
+	get_tree().paused = false
+	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
