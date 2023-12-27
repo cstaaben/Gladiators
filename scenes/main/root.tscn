@@ -11,11 +11,11 @@
 [ext_resource type="Script" path="res://scenes/ui/xp_bar.gd" id="3_d6tsk"]
 [ext_resource type="PackedScene" uid="uid://dp2a6sfm7uy4v" path="res://scenes/manager/experience_manager.tscn" id="4_homls"]
 [ext_resource type="PackedScene" uid="uid://cxtcmpy1meyli" path="res://scenes/ui/end_screen.tscn" id="5_h1j5a"]
-[ext_resource type="PackedScene" uid="uid://dvsr6cu7kn1m2" path="res://scenes/manager/upgrade_manager.tscn" id="7_mf42d"]
+[ext_resource type="PackedScene" uid="uid://chiemtg2g5m1p" path="res://scenes/manager/upgrade_manager.tscn" id="7_mf42d"]
 [ext_resource type="PackedScene" uid="uid://chrpr5jqt2khs" path="res://scenes/game_object/enemies/rat/rat.tscn" id="10_fhne6"]
 [ext_resource type="PackedScene" uid="uid://b2umuusahbvf7" path="res://scenes/game_object/enemies/wizard/wizard.tscn" id="11_m8ti6"]
 [ext_resource type="PackedScene" uid="uid://bpbqxp1auo5kj" path="res://scenes/game_object/enemies/bat/bat.tscn" id="12_gbbiw"]
-[ext_resource type="PackedScene" path="res://scenes/ui/vignette.tscn" id="16_vjb55"]
+[ext_resource type="PackedScene" uid="uid://b2ekn52efdiwb" path="res://scenes/ui/vignette.tscn" id="16_vjb55"]
 [ext_resource type="PackedScene" uid="uid://871bgdq75nev" path="res://scenes/ui/pause_menu.tscn" id="16_xtnxu"]
 
 [node name="Root" type="Node2D"]
