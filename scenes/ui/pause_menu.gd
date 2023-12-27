@@ -51,6 +51,7 @@ func _on_resume_button_pressed():
 
 	
 func _on_quit_button_pressed():
+	MetaProgression.save_data()
 	get_tree().quit()
 
 

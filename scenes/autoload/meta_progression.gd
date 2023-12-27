@@ -1,13 +1,13 @@
 extends Node
 
-const _UPGRADES_KEY = "upgrades"
-const _TOTAL_XP_KEY = "total_xp"
-const _QUANTITY_KEY = "quantity"
-const SAVE_PATH 	= "user://game.sav"
+const UPGRADES_KEY = "upgrades"
+const TOTAL_XP_KEY = "total_xp"
+const QUANTITY_KEY = "quantity"
+const SAVE_PATH 	= "user://game.save"
 
-var _meta_data: Dictionary = {
-	_TOTAL_XP_KEY: 0,
-	_UPGRADES_KEY: {},
+var meta_data: Dictionary = {
+	TOTAL_XP_KEY: 0,
+	UPGRADES_KEY: {},
 }
 
 func _ready():
@@ -20,19 +20,21 @@ func load_data():
 		return
 	
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	_meta_data = file.get_var()
+	meta_data = file.get_var()
 
 
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	file.store_var(_meta_data)
+	file.store_var(meta_data)
 
 
 func add_meta_upgrade(upgrade: MetaUpgrade):
-	if !_meta_data[_UPGRADES_KEY].has(upgrade.id): 
-		_meta_data[_UPGRADES_KEY][upgrade.id] = {_QUANTITY_KEY: 0}
-	_meta_data[_UPGRADES_KEY][upgrade.id][_QUANTITY_KEY] += 1
+	if !meta_data[UPGRADES_KEY].has(upgrade.id): 
+		meta_data[UPGRADES_KEY][upgrade.id] = {QUANTITY_KEY: 0}
+
+	meta_data[UPGRADES_KEY][upgrade.id][QUANTITY_KEY] += 1
+	save_data()
 
 
 func _on_xp_collected(number: float):
-	_meta_data[_TOTAL_XP_KEY] += number
+	meta_data[TOTAL_XP_KEY] += number

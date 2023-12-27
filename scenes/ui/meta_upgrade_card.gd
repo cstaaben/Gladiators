@@ -5,14 +5,18 @@ signal selected
 
 @onready var name_label: Label = %NameLabel
 @onready var description_label: Label = %DescriptionLabel
+@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var purchase_button: Button = %PurchaseButton
+@onready var progress_label: Label = %ProgressLabel
+
+var _upgrade: MetaUpgrade
 
 var disabled: bool = false
 
 func _ready():
-	gui_input.connect(_on_gui_input)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	%PurchaseButton.pressed.connect(_on_purchase_button_pressed)
+	purchase_button.pressed.connect(_on_purchase_button_pressed)
 	
 	
 func play_in(delay: float = 0.0, is_left: bool = false):
@@ -30,16 +34,19 @@ func play_in(delay: float = 0.0, is_left: bool = false):
 
 
 func set_meta_upgrade(upgrade: MetaUpgrade):
-	name_label.text = upgrade.name
+	self._upgrade = upgrade
+	name_label.text = upgrade.title
 	description_label.text = upgrade.description
-	
-	
-func _on_gui_input(event: InputEvent):
-	if !event.is_action_pressed("left_click") || disabled:
-		return
-	
-	$SelectedAudioPlayer.play_random()
-	select_card()
+	update_progress()
+
+
+func update_progress():
+	var total_xp = MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY]
+	var percent = total_xp / _upgrade.xp_cost
+	percent = min(percent, 1)
+	progress_bar.value = percent
+	purchase_button.disabled = percent < 1
+	progress_label.text = str(total_xp) + "/" + str(_upgrade.xp_cost)
 	
 	
 func select_card():
@@ -72,4 +79,13 @@ func _on_mouse_exited():
 
 
 func _on_purchase_button_pressed():
+	if _upgrade == null:
+		return
+
+	MetaProgression.add_meta_upgrade(_upgrade)
+	print(MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY])
+	MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY] -= _upgrade.xp_cost
+	print(MetaProgression.meta_data[MetaProgression.TOTAL_XP_KEY])
+	MetaProgression.save_data()
+	get_tree().call_group("meta_upgrade_card", "update_progress")
 	select_card()
