@@ -18,9 +18,9 @@ func _on_timer_timeout():
 		return
 
 	var direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var rotation_degrees = 360.0 / anvil_count + 1
+	var rotation_degrees = 360.0 / (anvil_count + 1)
 	var distance = randf_range(0, BASE_RANGE)
-	for i in anvil_count + 1:
+	for i in (anvil_count + 1):
 		var rotated_direction = direction.rotated(deg_to_rad(i * rotation_degrees))
 		var spawn_position = player.global_position + (rotated_direction * distance)
 
