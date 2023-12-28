@@ -11,12 +11,14 @@ const SPAWN_RADIUS = 375
 
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
-
+var spawn_number: int = 1
+var last_spawn_increase: int = 0
 
 func _ready():
 	base_spawn_time = timer.wait_time
 	timer.timeout.connect(_on_timer_timeout)
 	arena_time_manager.difficulty_increased.connect(_on_difficulty_increased)
+	GameEvents.time_ticked.connect(_on_time_ticked)
 	enemy_table.add_item(rat_scene, 10)
 	
 	
@@ -50,14 +52,15 @@ func _on_timer_timeout():
 	if player == null:
 		return
 
-	var enemy_scene = enemy_table.random_item()
-	var enemy_instance = enemy_scene.instantiate() as Node2D
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
-	if entities_layer == null:
-		return
-		
-	entities_layer.add_child(enemy_instance)
-	enemy_instance.global_position = get_spawn_position()
+	for i in spawn_number:
+		var enemy_scene = enemy_table.random_item()
+		var enemy_instance = enemy_scene.instantiate() as Node2D
+		var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+		if entities_layer == null:
+			return
+			
+		entities_layer.add_child(enemy_instance)
+		enemy_instance.global_position = get_spawn_position()
 	
 
 func _on_difficulty_increased(difficulty: int):
@@ -68,3 +71,9 @@ func _on_difficulty_increased(difficulty: int):
 		enemy_table.add_item(wizard_scene, 15)
 	elif difficulty == 18:
 		enemy_table.add_item(bat_scene, 8)
+
+
+func _on_time_ticked(timestamp: int):
+	if last_spawn_increase == 0 || (timestamp - last_spawn_increase) == 30:
+		spawn_number += 1
+		last_spawn_increase = timestamp

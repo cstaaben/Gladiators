@@ -14,7 +14,7 @@ var total_xp: float = 0:
 	set(v):
 		if v < 0:
 			_meta_data[_TOTAL_XP_KEY] = 0
-		_meta_data[_TOTAL_XP_KEY] += v
+		_meta_data[_TOTAL_XP_KEY] = v
 	get:
 		return _meta_data[_TOTAL_XP_KEY]
 
