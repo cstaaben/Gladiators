@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byvdt3uuoepy4"]
+[gd_scene load_steps=19 format=3 uid="uid://byvdt3uuoepy4"]
 
 [ext_resource type="Script" path="res://scenes/main/root.gd" id="1_2hglr"]
 [ext_resource type="PackedScene" uid="uid://bx4wjth5gj4df" path="res://scenes/manager/enemy_manager.tscn" id="1_11wq2"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://chrpr5jqt2khs" path="res://scenes/game_object/enemies/rat/rat.tscn" id="10_fhne6"]
 [ext_resource type="PackedScene" uid="uid://b2umuusahbvf7" path="res://scenes/game_object/enemies/wizard/wizard.tscn" id="11_m8ti6"]
 [ext_resource type="PackedScene" uid="uid://bpbqxp1auo5kj" path="res://scenes/game_object/enemies/bat/bat.tscn" id="12_gbbiw"]
+[ext_resource type="PackedScene" uid="uid://b4ys77fgin0k3" path="res://scenes/game_object/enemies/spider/spider.tscn" id="13_00y0h"]
 [ext_resource type="PackedScene" uid="uid://b2ekn52efdiwb" path="res://scenes/ui/vignette.tscn" id="16_vjb55"]
 [ext_resource type="PackedScene" uid="uid://871bgdq75nev" path="res://scenes/ui/pause_menu.tscn" id="16_xtnxu"]
 
@@ -39,6 +40,7 @@ experience_manager = NodePath("../ExperienceManager")
 rat_scene = ExtResource("10_fhne6")
 wizard_scene = ExtResource("11_m8ti6")
 bat_scene = ExtResource("12_gbbiw")
+spider_scene = ExtResource("13_00y0h")
 arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_homls")]

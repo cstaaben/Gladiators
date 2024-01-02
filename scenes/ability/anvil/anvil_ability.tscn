@@ -3,7 +3,58 @@
 [ext_resource type="Texture2D" uid="uid://bvtqtytbbpjvb" path="res://scenes/ability/anvil/anvil.png" id="1_3ejre"]
 [ext_resource type="Script" path="res://scenes/ability/anvil/anvil_ability.gd" id="1_svucm"]
 [ext_resource type="PackedScene" uid="uid://brdwjs2p2glh0" path="res://scenes/component/hit_box_component.tscn" id="2_e1phe"]
-[ext_resource type="Texture2D" uid="uid://dssa5hffc5qcx" path="res://scenes/ability/anvil/particle.png" id="4_6f5i7"]
+[ext_resource type="Texture2D" uid="uid://dssa5hffc5qcx" path="res://assets/particles/particle.png" id="2_tsnql"]
+
+[sub_resource type="Animation" id="Animation_k3dn7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tktw5"]
 resource_name = "fall_in"
@@ -72,57 +123,6 @@ tracks/4/keys = {
 "values": [false, true, false, false]
 }
 
-[sub_resource type="Animation" id="Animation_k3dn7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbw23"]
 _data = {
 "RESET": SubResource("Animation_k3dn7"),
@@ -175,7 +175,7 @@ autoplay = "fall_in"
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_842lc")
-texture = ExtResource("4_6f5i7")
+texture = ExtResource("2_tsnql")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.9

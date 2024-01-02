@@ -1,0 +1,243 @@
+[gd_scene load_steps=27 format=3 uid="uid://b4ys77fgin0k3"]
+
+[ext_resource type="Script" path="res://scenes/game_object/enemies/spider/spider.gd" id="1_m8feq"]
+[ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_kgqyg"]
+[ext_resource type="AudioStream" uid="uid://dwp6dck2v0r3n" path="res://assets/audio/hit_000.ogg" id="3_wnjkk"]
+[ext_resource type="AudioStream" uid="uid://bd51qy8ulp74n" path="res://assets/audio/hit_001.ogg" id="4_iyjbc"]
+[ext_resource type="AudioStream" uid="uid://vegoymwgqxww" path="res://assets/audio/hit_002.ogg" id="5_s5ubw"]
+[ext_resource type="AudioStream" uid="uid://can2mmmhgv5mt" path="res://assets/audio/hit_003.ogg" id="6_fr8im"]
+[ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="7_48w60"]
+[ext_resource type="PackedScene" uid="uid://cxr7r8lu6oe7y" path="res://scenes/component/health_component.tscn" id="8_8hol0"]
+[ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/vial_drop_component.tscn" id="9_nhotr"]
+[ext_resource type="PackedScene" uid="uid://bw0mb15jrgilp" path="res://scenes/component/velocity_component.tscn" id="10_2dcau"]
+[ext_resource type="PackedScene" uid="uid://4ljnqknkpg5r" path="res://scenes/component/death_component.tscn" id="11_sdp6k"]
+[ext_resource type="PackedScene" uid="uid://c7yoch83br74m" path="res://scenes/component/hit_flash_component.tscn" id="12_f0ysk"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="13_541vr"]
+[ext_resource type="PackedScene" uid="uid://ckbkksdk7rjau" path="res://scenes/component/hurt_box_component.tscn" id="14_a0vxa"]
+[ext_resource type="Texture2D" uid="uid://bru2msn804fas" path="res://scenes/game_object/enemies/spider/spider.png" id="15_dvs61"]
+[ext_resource type="Texture2D" uid="uid://dssa5hffc5qcx" path="res://assets/particles/particle.png" id="16_i1t40"]
+
+[sub_resource type="Animation" id="Animation_ndbms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JumpAttack/GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r0jdt"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0872665, -0.0872665, 0.0872665, -0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_i3jpa"]
+resource_name = "jump"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 4.59479, 1, 2.2974, 0.297302),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 0.75), Vector2(0.75, 1.7), Vector2(1.25, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 2.54912, 6.06286, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -25), Vector2(0, -5), Vector2(0, -5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JumpAttack/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajh1e"]
+_data = {
+"RESET": SubResource("Animation_ndbms"),
+"jump": SubResource("Animation_i3jpa"),
+"walk": SubResource("Animation_r0jdt")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khx1j"]
+resource_local_to_scene = true
+shader = ExtResource("13_541vr")
+shader_parameter/brightness = 2.08165e-12
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pf7g4"]
+radius = 12.0
+
+[sub_resource type="Gradient" id="Gradient_2v32t"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.553488)
+colors = PackedColorArray(0.811765, 0.509804, 0.329412, 1, 0.46, 0.29394, 0.1978, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6bi32"]
+gradient = SubResource("Gradient_2v32t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t7pb3"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+damping_min = 600.0
+damping_max = 750.0
+scale_min = 0.0
+scale_max = 0.7
+color_initial_ramp = SubResource("GradientTexture1D_6bi32")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c841"]
+radius = 7.0
+
+[node name="Spider" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_m8feq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ajh1e")
+}
+autoplay = "walk"
+
+[node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("2_kgqyg")]
+streams = Array[AudioStream]([ExtResource("3_wnjkk"), ExtResource("4_iyjbc"), ExtResource("5_s5ubw"), ExtResource("6_fr8im"), ExtResource("7_48w60")])
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_8hol0")]
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_nhotr")]
+drop_percent = 1.0
+health_component = NodePath("../HealthComponent")
+
+[node name="WalkVelocityComponent" parent="." instance=ExtResource("10_2dcau")]
+unique_name_in_owner = true
+max_speed = 25
+acceleration = 3.0
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("11_sdp6k")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("12_f0ysk")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_khx1j")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("14_a0vxa")]
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(2.08165e-12, -5)
+shape = SubResource("CircleShape2D_pf7g4")
+
+[node name="JumpAttack" type="Node2D" parent="."]
+
+[node name="JumpVelocityComponent" parent="JumpAttack" instance=ExtResource("10_2dcau")]
+unique_name_in_owner = true
+max_speed = 200
+acceleration = 20.0
+
+[node name="JumpCooldownTimer" type="Timer" parent="JumpAttack"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="JumpAttack"]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_t7pb3")
+texture = ExtResource("16_i1t40")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 0
+interpolate = false
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, -5)
+texture = ExtResource("15_dvs61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, -5)
+shape = SubResource("CircleShape2D_7c841")

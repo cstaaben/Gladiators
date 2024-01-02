@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dssa5hffc5qcx"
-path="res://.godot/imported/particle.png-307817641cee38824d8420f6334e89e1.ctex"
+path="res://.godot/imported/particle.png-877079bd866489252f288a2a4efd10c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ability/anvil/particle.png"
-dest_files=["res://.godot/imported/particle.png-307817641cee38824d8420f6334e89e1.ctex"]
+source_file="res://assets/particles/particle.png"
+dest_files=["res://.godot/imported/particle.png-877079bd866489252f288a2a4efd10c9.ctex"]
 
 [params]
 

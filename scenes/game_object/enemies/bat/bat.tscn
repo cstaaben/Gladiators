@@ -130,7 +130,6 @@ hit_flash_material = SubResource("ShaderMaterial_3cwqx")
 texture = ExtResource("1_c4px1")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("14_ffel5")]
-visible = false
 position = Vector2(0, -6)
 health = NodePath("../HealthComponent")
 
@@ -138,6 +137,5 @@ health = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_e78ca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_alfxt")

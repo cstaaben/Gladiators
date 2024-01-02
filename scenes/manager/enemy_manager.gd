@@ -5,6 +5,7 @@ const SPAWN_RADIUS = 375
 @export var rat_scene: PackedScene
 @export var wizard_scene: PackedScene
 @export var bat_scene: PackedScene
+@export var spider_scene: PackedScene
 @export var arena_time_manager: Node
 
 @onready var timer: Timer = $Timer
@@ -20,6 +21,7 @@ func _ready():
 	arena_time_manager.difficulty_increased.connect(_on_difficulty_increased)
 	GameEvents.time_ticked.connect(_on_time_ticked)
 	enemy_table.add_item(rat_scene, 10)
+	enemy_table.add_item(spider_scene, 1000)
 	
 	
 func get_spawn_position():
