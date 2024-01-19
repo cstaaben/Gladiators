@@ -26,9 +26,9 @@ func decelerate():
 	accelerate_in_direction(Vector2.ZERO)
 
 
-## Returns a normalized Vector2 indicating the direction to the player. It returns [Vector2.ZERO] 
-## if either the owner or the player is null.
-func direction_to_player() -> Vector2:	
+## Returns a normalized Vector2 indicating the direction to the player. It 
+## returns [Vector2.ZERO] if either the owner or the player is null.
+func direction_to_player() -> Vector2:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return Vector2.ZERO
@@ -41,7 +41,7 @@ func direction_to_player() -> Vector2:
 	return (player.global_position - owner_node.global_position).normalized()
 
 
-## Returns a the distance to the player. It returns [Vector2.ZERO] if either the
+## Returns a the distance to the player. It returns 0 if either the
 ## owner or the player is null.
 func distance_to_player() -> float:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
