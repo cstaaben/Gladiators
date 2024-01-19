@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://can2mmmhgv5mt" path="res://assets/audio/hit_003.ogg" id="6_75dqb"]
 [ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="7_5taej"]
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="8_30fpe"]
-[ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/vial_drop_component.tscn" id="9_ggtbe"]
+[ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/drop_object_component.tscn" id="8_nwkmr"]
 [ext_resource type="PackedScene" uid="uid://4ljnqknkpg5r" path="res://scenes/component/death_component.tscn" id="10_njx6r"]
 [ext_resource type="PackedScene" uid="uid://bw0mb15jrgilp" path="res://scenes/component/velocity_component.tscn" id="11_yssyh"]
 [ext_resource type="PackedScene" uid="uid://c7yoch83br74m" path="res://scenes/component/hit_flash_component.tscn" id="12_ic4a3"]
@@ -103,13 +103,12 @@ autoplay = "walk"
 [node name="RandomAudioPlayer2DComponent" parent="." instance=ExtResource("2_ndoie")]
 streams = Array[AudioStream]([ExtResource("3_qi7tw"), ExtResource("4_c4n0a"), ExtResource("5_nq17s"), ExtResource("6_75dqb"), ExtResource("7_5taej")])
 
+[node name="DropObjectComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_nwkmr")]
+health_component = NodePath("../HealthComponent")
+
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_30fpe")
 max_health = 30.0
-
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_ggtbe")]
-drop_percent = 0.4
-health_component = NodePath("../HealthComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("10_njx6r")]
 health_component = NodePath("../HealthComponent")
