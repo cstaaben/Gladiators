@@ -48,6 +48,8 @@ func get_upgrades():
 	return _meta_data[_UPGRADES_KEY]
 
 
+## get_upgrade_quantity returns the number of times the player has chosen the
+## upgrade identified by id. If the upgrade is not found, it returns 0.
 func get_upgrade_quantity(id: String):
 	if !_meta_data[_UPGRADES_KEY].has(id):
 		return 0

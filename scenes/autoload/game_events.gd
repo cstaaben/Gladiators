@@ -19,7 +19,7 @@ func emit_xp_vial_collected(number: float):
 	
 func emit_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	ability_upgrade_added.emit(upgrade, current_upgrades)
-	
+
 
 func emit_player_damaged():
 	player_damaged.emit()

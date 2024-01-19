@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://djch2pfdmosln" path="res://assets/audio/switch9.ogg" id="11_8v1l7"]
 [ext_resource type="AudioStream" uid="uid://b5xp0man02td4" path="res://assets/audio/switch10.ogg" id="12_du1ii"]
 [ext_resource type="Theme" uid="uid://dk12bt5tqquv3" path="res://resources/theme/theme.tres" id="13_4yv35"]
-[ext_resource type="Texture2D" uid="uid://2mcry7xyesga" path="res://scenes/game_object/experience_vial/experience_vial.png" id="13_qgqpy"]
+[ext_resource type="Texture2D" uid="uid://2mcry7xyesga" path="res://scenes/game_object/drops/experience_vial/experience_vial.png" id="13_qgqpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl8ei"]
 content_margin_top = 4.0

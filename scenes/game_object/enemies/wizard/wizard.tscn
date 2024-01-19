@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d1euhgtbcbvxo" path="res://scenes/game_object/enemies/wizard/wizard_enemy.png" id="1_5mg3x"]
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="1_belug"]
 [ext_resource type="Script" path="res://scenes/game_object/enemies/wizard/wizard.gd" id="1_txki8"]
-[ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/vial_drop_component.tscn" id="2_qhuf4"]
 [ext_resource type="PackedScene" uid="uid://diq0ksf1jk0" path="res://scenes/component/random_audio_player_2d_component.tscn" id="2_wsvir"]
 [ext_resource type="AudioStream" uid="uid://dwp6dck2v0r3n" path="res://assets/audio/hit_000.ogg" id="3_2do5n"]
 [ext_resource type="PackedScene" uid="uid://4ljnqknkpg5r" path="res://scenes/component/death_component.tscn" id="3_fcuvl"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c7yoch83br74m" path="res://scenes/component/hit_flash_component.tscn" id="6_qupdn"]
 [ext_resource type="AudioStream" uid="uid://chbifh3bj3sea" path="res://assets/audio/hit_004.ogg" id="7_f0esi"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_kjvjp"]
+[ext_resource type="PackedScene" uid="uid://b1t3qmtil0nvp" path="res://scenes/component/drop_object_component.tscn" id="10_0o6ex"]
 
 [sub_resource type="Animation" id="Animation_v112v"]
 length = 0.001
@@ -149,12 +149,12 @@ streams = Array[AudioStream]([ExtResource("3_2do5n"), ExtResource("4_glg37"), Ex
 script = ExtResource("1_belug")
 max_health = 20.0
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_qhuf4")]
-health_component = NodePath("../HealthComponent")
-
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_fcuvl")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite")
+
+[node name="DropObjectComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_0o6ex")]
+health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_8tbsk")]
 max_speed = 60

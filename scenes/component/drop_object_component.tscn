@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1t3qmtil0nvp"]
+
+[ext_resource type="Script" path="res://scenes/component/drop_object_component.gd" id="1_qmkbe"]
+[ext_resource type="PackedScene" uid="uid://bri5gmy3ic52o" path="res://scenes/game_object/drops/experience_vial/experience_vial.tscn" id="2_cagkk"]
+[ext_resource type="PackedScene" uid="uid://bneu40qwg1r2l" path="res://scenes/game_object/drops/health_potion/health_potion.tscn" id="3_osmhh"]
+
+[node name="DropObjectComponent" type="Node"]
+script = ExtResource("1_qmkbe")
+xp_vial_scene = ExtResource("2_cagkk")
+health_potion_scene = ExtResource("3_osmhh")
