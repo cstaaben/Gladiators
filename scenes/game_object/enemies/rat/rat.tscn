@@ -107,7 +107,6 @@ streams = Array[AudioStream]([ExtResource("3_g26gm"), ExtResource("4_40xny"), Ex
 [node name="HealthComponent" parent="." instance=ExtResource("2_co0pl")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_25xii")]
-drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_cpoba")]
