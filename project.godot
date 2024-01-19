@@ -40,10 +40,6 @@ window/vsync/vsync_mode=0
 window/size/mode.release=3
 window/size/mode.debug=0
 
-[editor]
-
-version_control/autoload_on_startup=true
-
 [editor_plugins]
 
 enabled=PackedStringArray()
