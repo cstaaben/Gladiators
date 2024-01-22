@@ -39,10 +39,6 @@ func _physics_process(_delta):
 		jump_cooldown_timer.start()
 
 
-# TODO: extend animation time or shorten radius; spider glides towards player
-# after landing
-# TODO: prevent spider from turning in "mid-air" towards the player; need to
-# "jump" in a straight line
 func _process(_delta):
 	if jumping:
 		jump_velocity_component.move(self)

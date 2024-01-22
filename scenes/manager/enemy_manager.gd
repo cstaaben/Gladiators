@@ -21,7 +21,6 @@ func _ready():
 	arena_time_manager.difficulty_increased.connect(_on_difficulty_increased)
 	GameEvents.time_ticked.connect(_on_time_ticked)
 	enemy_table.add_item(rat_scene, 10)
-	enemy_table.add_item(spider_scene, 10)
 	
 	
 func get_spawn_position():
@@ -69,10 +68,13 @@ func _on_difficulty_increased(difficulty: int):
 	var timer_decrease = min((.1 / 12) * difficulty, 0.7)
 	timer.wait_time = base_spawn_time - timer_decrease
 	
-	if difficulty == 6:
-		enemy_table.add_item(wizard_scene, 15)
-	elif difficulty == 18:
-		enemy_table.add_item(bat_scene, 8)
+	match difficulty:
+		6:
+			enemy_table.add_item(wizard_scene, 15)
+		12:
+			enemy_table.add_item(spider_scene, 10)
+		18:
+			enemy_table.add_item(bat_scene, 8)
 
 
 func _on_time_ticked(timestamp: int):
