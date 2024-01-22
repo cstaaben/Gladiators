@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fd0bhtl1gm35"]
 
-[ext_resource type="Script" path="res://scenes/ui/arena_time_ui.gd" id="1_kviy5"]
+[ext_resource type="Script" path="res://scenes/ui/game_screen/arena_time_ui.gd" id="1_kviy5"]
 [ext_resource type="Theme" uid="uid://dk12bt5tqquv3" path="res://resources/theme/theme.tres" id="2_dhwqo"]
 
 [node name="ArenaTimeUI" type="CanvasLayer" node_paths=PackedStringArray("arena_time_manager")]

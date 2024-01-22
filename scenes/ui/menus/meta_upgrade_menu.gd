@@ -8,7 +8,7 @@ signal meta_selected
 @onready var grid_container: GridContainer = %GridContainer
 @onready var cancel_button: Button = %CancelButton
 
-var _meta_upgrade_card_scene = preload("res://scenes/ui/meta_upgrade_card.tscn")
+var _meta_upgrade_card_scene = preload("res://scenes/ui/menus/meta_upgrade_card.tscn")
 
 func _ready():
 	cancel_button.pressed.connect(_on_cancel_pressed)
@@ -30,4 +30,4 @@ func _on_meta_card_selected():
 
 
 func _on_cancel_pressed():
-	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/main_menu.tscn")

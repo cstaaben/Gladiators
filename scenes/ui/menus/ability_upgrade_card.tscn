@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bjj3bkukb6535"]
 
-[ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_gogdj"]
-[ext_resource type="PackedScene" path="res://scenes/component/random_audio_player_component.tscn" id="2_g273o"]
+[ext_resource type="Script" path="res://scenes/ui/menus/ability_upgrade_card.gd" id="1_gogdj"]
+[ext_resource type="PackedScene" uid="uid://pee1yb3ty2f7" path="res://scenes/component/random_audio_player_component.tscn" id="2_g273o"]
 [ext_resource type="AudioStream" uid="uid://br7m2bwqeg5n7" path="res://assets/audio/switch1.ogg" id="3_sv2jd"]
 [ext_resource type="AudioStream" uid="uid://nnnsaaakthad" path="res://assets/audio/switch2.ogg" id="4_21phl"]
 [ext_resource type="AudioStream" uid="uid://d0yhvg8gitysj" path="res://assets/audio/switch3.ogg" id="5_snqyc"]

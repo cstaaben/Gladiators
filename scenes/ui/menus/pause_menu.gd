@@ -2,8 +2,8 @@ extends Node
 
 @onready var panel_container = %PanelContainer
 
-var _options_menu_scene: PackedScene = preload("res://scenes/ui/options_menu.tscn")
-var _countdown_scene: PackedScene = preload("res://scenes/ui/pause_countdown.tscn")
+var _options_menu_scene: PackedScene = preload("res://scenes/ui/menus/options_menu.tscn")
+var _countdown_scene: PackedScene = preload("res://scenes/ui/menus/pause_countdown.tscn")
 var _is_closing: bool = false
 
 func _ready():
@@ -69,7 +69,7 @@ func _on_quit_button_pressed():
 
 func _on_main_menu_pressed():
 	get_tree().paused = false
-	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/main_menu.tscn")
 
 
 func _on_options_pressed():

@@ -40,8 +40,7 @@ func play_jingle(defeat: bool = false) -> void:
 
 
 func _on_continue_button_pressed():
-	ScreenTransition.transition_to_scene("res://scenes/ui/meta_upgrade_menu.tscn")
-	await ScreenTransition.transitioned_halfway
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/meta_upgrade_menu.tscn")
 	get_tree().paused = false
 
 
@@ -51,6 +50,5 @@ func _on_quit_button_pressed():
 
 
 func _on_menu_button_pressed():
-	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
-	await ScreenTransition.transitioned_halfway
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/main_menu.tscn")
 	get_tree().paused = false
