@@ -30,13 +30,12 @@ func _physics_process(_delta):
 	# cooldown hasn't finished or player is too far away
 	if !jump_cooldown_timer.is_stopped() || player_distance > JUMP_DISTANCE:
 		return
-		
-	# TODO: use a tween for jump animation
 	
 	# within range of player, start jump attack
 	if !jumping:
 		$AnimationPlayer.play("jump")
 		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("walk")
 		jump_cooldown_timer.start()
 
 
