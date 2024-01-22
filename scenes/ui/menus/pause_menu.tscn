@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://871bgdq75nev"]
 
-[ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_mx5fs"]
+[ext_resource type="Script" path="res://scenes/ui/menus/pause_menu.gd" id="1_mx5fs"]
 [ext_resource type="Theme" uid="uid://dk12bt5tqquv3" path="res://resources/theme/theme.tres" id="2_bnjde"]
-[ext_resource type="PackedScene" uid="uid://dkuy1u0m1tevx" path="res://scenes/ui/sound_button.tscn" id="3_cb6sr"]
+[ext_resource type="PackedScene" uid="uid://dkuy1u0m1tevx" path="res://scenes/ui/components/sound_button.tscn" id="3_cb6sr"]
 
 [sub_resource type="Animation" id="Animation_76fe5"]
 length = 0.001

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-var options_scene = preload("res://scenes/ui/options_menu.tscn")
-var meta_upgrades_scene = preload("res://scenes/ui/meta_upgrade_menu.tscn")
+var options_scene = preload("res://scenes/ui/menus/options_menu.tscn")
+var meta_upgrades_scene = preload("res://scenes/ui/menus/meta_upgrade_menu.tscn")
 
 func _ready():
 	%PlayButton.pressed.connect(_on_play_pressed)
