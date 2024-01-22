@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/ui/options_menu.gd" id="1_2xs2y"]
 [ext_resource type="TileSet" uid="uid://b4m1ra0jhh7yx" path="res://resources/tileset.tres" id="2_k3bqy"]
-[ext_resource type="PackedScene" path="res://scenes/ui/vignette.tscn" id="2_vv88l"]
-[ext_resource type="PackedScene" path="res://scenes/ui/sound_button.tscn" id="3_7kl2k"]
+[ext_resource type="PackedScene" uid="uid://b2ekn52efdiwb" path="res://scenes/ui/vignette.tscn" id="2_vv88l"]
+[ext_resource type="PackedScene" uid="uid://dkuy1u0m1tevx" path="res://scenes/ui/sound_button.tscn" id="3_7kl2k"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 layer = 2
