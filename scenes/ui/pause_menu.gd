@@ -3,6 +3,7 @@ extends Node
 @onready var panel_container = %PanelContainer
 
 var _options_menu_scene: PackedScene = preload("res://scenes/ui/options_menu.tscn")
+var _countdown_scene: PackedScene = preload("res://scenes/ui/pause_countdown.tscn")
 var _is_closing: bool = false
 
 func _ready():
@@ -47,11 +48,22 @@ func _close():
 
 
 func _on_resume_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	
+	var countdown_instance = _countdown_scene.instantiate()
+	add_child(countdown_instance)
+	countdown_instance.finished.connect(_on_countdown_finished.bind(countdown_instance))
+	self.visible = false
+	await countdown_instance.finished
+	
+	
+func _on_countdown_finished(countdown_instance: Node):
+	countdown_instance.queue_free()
 	_close()
 
 	
 func _on_quit_button_pressed():
-	MetaProgression.save_data()
 	get_tree().quit()
 
 
