@@ -8,6 +8,7 @@ func _ready():
 	%UpgradesButton.pressed.connect(_on_upgrades_pressed)
 	%OptionsButton.pressed.connect(_on_options_pressed)
 	%QuitButton.pressed.connect(_on_quit_pressed)
+	%MapGenButton.pressed.connect(_on_map_gen_pressed)
 
 
 func _on_play_pressed() -> void:
@@ -38,3 +39,7 @@ func _on_upgrades_pressed():
 
 	var meta_upgrades_instance = meta_upgrades_scene.instantiate()
 	add_child(meta_upgrades_instance)
+	
+	
+func _on_map_gen_pressed():
+	ScreenTransition.transition_to_scene("res://scenes/ui/debug/map_generation.tscn")
