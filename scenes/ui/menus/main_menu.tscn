@@ -44,22 +44,26 @@ text = "Gladiators"
 
 [node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_x4j3b")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Play"
 
 [node name="UpgradesButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_x4j3b")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Upgrades"
 
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_x4j3b")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Options
 "
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_x4j3b")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Quit
 "
