@@ -25,7 +25,9 @@ func _ready():
 		
 		
 func create_map():
-	pass
+	for x in _map_size.x:
+		for y in _map_size.y:
+			tile_map.set_cell(0, Vector2(x, y), 0, Vector2(1, 4))
 	
 	
 func stop_walkers():
@@ -33,8 +35,8 @@ func stop_walkers():
 	
 	
 func reset_map():
-	pass
-	
+	tile_map.clear_layer(0)
+
 	
 func set_map_size(size: Vector2):
 	_map_size = size
@@ -74,11 +76,11 @@ func get_walker_death_chance():
 	return _walkers[0].get_death_chance()
 	
 	
-func set_walker_birth_chance():
+func set_walker_birth_chance(chance: float):
 	pass
 	
 	
-func set_walker_death_chance():
+func set_walker_death_chance(chance: float):
 	pass
 
 

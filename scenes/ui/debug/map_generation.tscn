@@ -1,16 +1,111 @@
-[gd_scene load_steps=6 format=3 uid="uid://hh7g7q4fpetx"]
+[gd_scene load_steps=9 format=3 uid="uid://c0nbc3p0j85u"]
 
 [ext_resource type="Script" path="res://scenes/ui/debug/map_generation.gd" id="1_pqd55"]
-[ext_resource type="TileSet" uid="uid://b4m1ra0jhh7yx" path="res://resources/tileset.tres" id="2_23yfr"]
+[ext_resource type="Texture2D" uid="uid://dksakmn4ibcwa" path="res://assets/environment/tilemap_packed.png" id="2_pkpym"]
 [ext_resource type="PackedScene" uid="uid://cqjbchd2bjpcr" path="res://scenes/manager/map_manager.tscn" id="3_2gf6s"]
 [ext_resource type="Theme" uid="uid://dk12bt5tqquv3" path="res://resources/theme/theme.tres" id="3_55x5d"]
-[ext_resource type="PackedScene" path="res://scenes/game_object/game_camera/game_camera.tscn" id="5_3pngj"]
+[ext_resource type="PackedScene" uid="uid://dkuy1u0m1tevx" path="res://scenes/ui/components/sound_button.tscn" id="5_fnvag"]
+[ext_resource type="PackedScene" uid="uid://d2wxovf5uw5qv" path="res://scenes/ui/debug/map_camera.tscn" id="6_svvla"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1u1w"]
+texture = ExtResource("2_pkpym")
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 0
+0:4/0/probability = 20.0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 0
+1:4/0/probability = 5.0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+6:3/0 = 0
+6:3/0/terrain_set = 0
+6:3/0/terrain = 0
+6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:3/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_3xxh6"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Floor"
+terrain_set_0/terrain_0/color = Color(0.364706, 0.839216, 0.219608, 1)
+sources/0 = SubResource("TileSetAtlasSource_y1u1w")
 
 [node name="MapGeneration" type="CanvasLayer"]
 script = ExtResource("1_pqd55")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_23yfr")
+tile_set = SubResource("TileSet_3xxh6")
 format = 2
 
 [node name="MapManager" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("3_2gf6s")]
@@ -34,6 +129,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
@@ -169,13 +265,21 @@ size_flags_vertical = 8
 
 [node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Pause"
 
 [node name="LogButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "Log"
+
+[node name="BackButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("5_fnvag")]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+text = "Back"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -184,13 +288,15 @@ size_flags_vertical = 0
 
 [node name="ZoomInButton" type="Button" parent="MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "+"
 
 [node name="ZoomOutButton" type="Button" parent="MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 text = "-"
 
-[node name="GameCamera" parent="." instance=ExtResource("5_3pngj")]
+[node name="MapCamera" parent="." instance=ExtResource("6_svvla")]
 unique_name_in_owner = true

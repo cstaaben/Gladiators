@@ -1,4 +1,5 @@
 extends Button
+class_name SoundButton
 
 
 func _ready():
